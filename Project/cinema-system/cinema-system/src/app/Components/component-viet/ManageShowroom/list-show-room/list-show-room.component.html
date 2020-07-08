@@ -1,0 +1,40 @@
+<div  class="row" style="margin-top: 50px; font-family: Roboto">
+  <h2 style="margin-left: 30px;  ; font-size:40px;
+   color: #222; ">Danh sách phòng chiếu</h2>
+  <div class="d-flex" id="search">
+    <input style="font-size:20px;  color: #222;" class="form-control " type="text" placeholder="Tìm phòng "
+            style="width:400px"  [(ngModel)]="searchTerm">
+
+    <button class="btn btn-success" type="submit" style="height:39px; width: 60px" id="btnSearch" >Tìm</button>
+  </div>
+  <div class="row">
+    <button id="addNewEmployee" class="btn btn-success" (click)="addShowRoom()">Thêm phòng chiếu</button>
+    <table id="tableEmployee" class="table table-bordered table-hover">
+      <thead>
+      <tr style="text-align: center; font-family: Roboto">
+        <th>Mã Phòng</th>
+        <th>Tên Phòng</th>
+        <th>Số lượng ghế</th>
+        <th>Chi tiết phòng</th>
+
+      </tr>
+      </thead>
+      <tbody style="text-align: center; font-family: 'Roboto Light'">
+      <tr *ngFor="let showroom of showroomDetails |filter:searchTerm |paginate: { itemsPerPage: 5, currentPage: p }">
+        <td>PC{{showroom[0]}}</td>
+        <td>{{showroom[1]}}</td>
+        <td>{{showroom[2]}}</td>
+        <td style="width: 180px">
+          <div class="d-flex align-items-stretch px-0">
+            <button class="btn btn-success" style="width: 80px; font-size: 15px; margin-left: 30px" [routerLink]="['/showRoom',showroom[0],'showroomDetails']"
+                    [state]="showroom">Chi tiết</button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div id="page"> <pagination-controls nextLabel="Tiếp tục" previousLabel="Quay lại"  (pageChange)="p = $event"></pagination-controls></div>
+
+  </div>
+
+</div>

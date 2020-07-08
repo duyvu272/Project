@@ -1,0 +1,39 @@
+
+<div class="d-flex search" style="margin: 10px">
+  <input class="form-control" placeholder="Tìm kiếm"  style="width: 300px; height: 30px" [(ngModel)]="search" >
+  <em class="fas fa-search" style="height: 30px; width: 30px;  border: solid lightsteelblue 0.1px; padding: 5px 5px 0 5px">
+  </em>
+</div>
+<table class="table table-striped" style="margin: 10px" >
+  <thead>
+  <tr>
+    <th scope="col">Mã đặt vé</th>
+    <th scope="col">Mã thành viên</th>
+    <th scope="col">Họ tên</th>
+    <th scope="col">CMND</th>
+    <th scope="col">Số điện thoại</th>
+    <th scope="col">Phim</th>
+    <th scope="col">Ngày Đặt vé</th>
+    <th scope="col">Xuất chiếu</th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of listTicket | filter:search | paginate: { itemsPerPage: 5, currentPage: page }">
+    <td>{{item.id}}</td>
+    <td>{{item['customer']['user'].id}}</td>
+    <td>{{item['customer'].fullName}}</td>
+    <td>{{item['customer'].idCard}}</td>
+    <td>{{item['customer'].phone}}</td>
+    <td>{{item['movieSchedules']['movie'].movieName}}</td>
+    <td>{{item.date | date : 'short'}}</td>
+    <td>{{item['movieSchedules'].openingDay | date : 'short'}}</td>
+    <td><input *ngIf="item.orderStatus == 'waiting'" type="button" class="btn-primary" id="btn" value="nhận vé" (click)="nextPage(item.id)" >
+      <input *ngIf="item.orderStatus === 'done'" type="button" class="btn-success" id="btn1" value="Đã nhận" (click)="inforConfirm(item.id)" >
+    </td>
+  </tr>
+  </tbody>
+</table>
+<div class="pagi">
+  <pagination-controls (pageChange)="page= $event "></pagination-controls>
+</div>

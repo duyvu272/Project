@@ -1,0 +1,160 @@
+
+
+<div class="container" style="margin-bottom: 20px; background-color: #fdfcf0">
+  <h2 style="padding: 5px">Thông tin bán vé</h2>
+  <hr />
+  <div class="row">
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+      <img id="image-main" class="gallery-image visible" src="{{ ticket?.movieSchedules.movie.srcImg }}" style="width: 210px; margin-left: 20px">
+    </div>
+    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+      <label style="font-size: 140%">{{ ticket?.movieSchedules.movie.movieName }}</label>
+      <hr>
+      <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <strong>Màn hình: </strong>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+          <p>{{ ticket?.seat.row.showRoom.screen }}</p>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <strong>Ngày chiếu: </strong>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+          <p>{{ ticket?.movieSchedules.movie.dateStart }}</p>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <strong>Giờ chiếu: </strong>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+          <p>{{ ticket?.movieSchedules.showTime.hourStart }}</p>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <strong>Ghế: </strong>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+          <p>B8 - B9 - B10 - C10</p>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <strong>Giá: </strong>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+          <p>{{ ticket?.ticketPrices.thu3gd | currency : 'VND' }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <strong>Đổi vé: </strong>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+          <p>0</p>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <strong>Điểm đổi vé: </strong>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+          <p>0</p>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <strong>Tổng cộng: </strong>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+          <strong style="color: green">180000đ</strong>
+        </div>
+      </div>
+
+
+      <br>
+      <label style="font-size: 180%">Thành viên</label>
+      <hr>
+      <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <strong>Số thẻ: </strong>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+          <p>{{ customer.dateOfBirth }}</p>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <strong>CMND: </strong>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+          <p>{{ customer.idCard }}</p>
+        </div>
+      </div>
+   
+      <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <strong>Họ tên: </strong>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+          <p>{{ customer.fullName }}</p>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <strong>Số điện thoại: </strong>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+          <p>{{ customer.phone }}</p>
+        </div>
+      </div>
+      
+      <br>
+      <button type="button" class="btn btn-warning" style="margin-top: 10px; margin-right: 2px" [routerLink]="['/ticket-confirm',ticketId]">Quay lại</button>
+  
+  <!-- Button to Open the Modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="margin-top: 10px">
+    Hoàn tất
+  </button>
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Thành công</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          Xác nhận bán vé thành công !!
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+        	<button type="button" class="btn btn-warning" data-dismiss="modal" [routerLink]="['/ticket-confirm']">Chọn phim khác</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Về trang chủ</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+    </div>
+    
+  </div>
+</div>

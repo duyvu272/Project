@@ -1,0 +1,53 @@
+<!-- <h4>Chon ghe</h4> -->
+<div class="row" *ngIf="movie&&ticket&&showRoom&&movieSchedules">
+  <div class="col">
+
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+      <label for="seatAmount" class="d-inline" >Chọn số lượng ghế</label>
+      <input type="number" id="seatAmount" class="form-control col-md-2 d-inline" formControlName="seatAmount" style="margin-right:10px"
+             (change)="handleSubmission()">
+
+      <h4 style="text-transform: uppercase;" >{{movie.movieName}}</h4>
+      <p style="font-weight: bold;">{{movie.dateStart|date}} {{' / '+movieSchedules.showTime.hourStart}}</p>
+      <div class="row text-center" *ngIf="SeatColors">
+        <div class="col mr-3">
+          <span  class=" py-2 px-5 mx-2 border border-dark bg-light"></span>
+          <p style="margin-top:8px">Ghế trống</p>
+        </div>
+        <div class="col">
+                    <span class=" py-2 px-5 mx-2 border border-dark bg-danger">
+                    </span>
+          <p style="margin-top:8px">Ghế đã có người đặt</p>
+        </div>
+      </div>
+      <div class="row text-center" *ngIf="SeatColors">
+        <div class="col mr-3">
+          <span class=" py-2 px-5 mx-2 border border-dark bg-success"></span>
+          <p style="margin-top:8px">Ghế đang chọn</p>
+        </div>
+        <div class="col">
+                    <span class=" py-2 px-5 mx-2 border border-dark bg-info">
+                    </span>
+          <p style="margin-top:8px">Ghế vip</p>
+        </div>
+      </div>
+      <div class="positions" *ngIf="rows">
+        <div class="row my-5" *ngFor="let row of rows;index as i">
+          <span class="col-md-1"><strong class="text-xl">{{rowNames[i]}}</strong></span>
+          <div class="col-md-11" *ngIf="seats">
+                        <span *ngFor=" let seat of seats[i]" (click)="onSeatSelect(seat)" style="margin: 15px;">
+                            <span class=" border border-dark px-5 py-3 font-weight-bold" *ngIf="seat.seatNumber"
+                                  [class]="seat.booked?SeatColors.BookedSeat:seat.selecting?SeatColors.SelectingSeat:seat.vip?SeatColors.VipSeat:'bg-light '"
+                                  style="padding: 15px 20px;">
+                                {{seat.name+seat.seatNumber}}</span>
+                        </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="alert alert-danger" *ngIf="formGroup.errors?.unequalOptions">Bạn chọn thiếu/dư ghế</div>
+      <button style="margin-left: 80%;" class="btn btn-primary" type="submit" [disabled]="formGroup.errors?.unequalOptions">Tiếp tục</button>
+
+    </form>
+  </div>
+</div>

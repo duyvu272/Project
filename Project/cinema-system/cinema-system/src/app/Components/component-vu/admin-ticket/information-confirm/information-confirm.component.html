@@ -1,0 +1,121 @@
+<div class="container" style="margin-bottom: 20px; background-color: #fdfcf0">
+  <h2 style="padding: 5px">Xác nhận đặt vé</h2>
+  <hr/>
+  <div class="row">
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+      <img id="image-main" class="gallery-image visible" alt="img" src="{{ ticket?.movieSchedules.movie.srcImg }}"
+           style="width: 210px; margin-left: 20px">
+    </div>
+    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+      <label style="font-size: 140%">{{ ticket?.movieSchedules.movie.movieName }}</label>
+      <hr>
+      <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <strong>Rạp chiếu: </strong>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+          <p>{{ ticket?.seat.row.showRoom.screen }}</p>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <strong>Ngày chiếu: </strong>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+          <p>{{ ticket?.movieSchedules.movie.dateStart }}</p>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <strong>Giờ chiếu: </strong>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+          <p>{{ ticket?.movieSchedules.showTime.hourStart }}</p>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <strong>Ghế: </strong>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+          <p>{{ticket?.seat.name}}</p>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <strong>Giá: </strong>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+          <p>{{ ticket?.price | currency : 'VND' }}</p>
+        </div>
+      </div>
+
+      <hr>
+      <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <strong>Đổi vé</strong>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+          <p>{{amountTicket}}</p>
+        </div>
+      </div>
+
+      <hr>
+      <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <strong>Điểm đổi vé: </strong>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+          <p> <strong style="color: green">{{ point?.pointValue | currency : 'VND' }}</strong></p>
+        </div>
+      </div>
+
+      <hr>
+      <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <strong>Tổng cộng: </strong>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+          <p> <strong style="color: green">{{ ticket?.price | currency : 'VND' }}</strong></p>
+        </div>
+      </div>
+
+
+      <br>
+      <label style="font-size: 140%">Thông tin thành viên</label>
+
+        <div style="font-size: 16px;font-weight: bold">
+          <div class="row infoE">
+            <div class="col-sm-3 ">
+              <p class="info">Mã thành viên :</p>
+            </div>
+            <div class="col-sm-9">{{ticket?.customer.id}}</div>
+          </div>
+          <div class="row infoE">
+            <div class="col-sm-3">
+              <p class="info">CMND :</p>
+            </div>
+            <div class="col-sm-9">{{ticket?.customer.idCard}}</div>
+          </div>
+          <div class="row infoE">
+            <div class="col-sm-3">
+              <p class="info">Họ tên :</p>
+            </div>
+            <div class="col-sm-9">{{ticket?.customer.fullName}}</div>
+          </div>
+
+          <div class="row infoE">
+            <div class="col-sm-3">
+              <p class="info">Số điện thoại :</p>
+            </div>
+            <div class="col-sm-9">{{ticket?.customer.phone}}</div>
+          </div>
+        </div>
+      <input type="button" value="Quay lại" class="btn-primary" (click)="submit()" style="width: 140px;height: 30px;border-radius: 12px">
+    </div>
+  </div>
+</div>

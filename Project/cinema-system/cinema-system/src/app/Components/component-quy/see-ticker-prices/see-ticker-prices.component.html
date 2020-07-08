@@ -1,0 +1,58 @@
+<div style=" border-radius: 10px;background-color: #fff9e9"
+     class="container mt-3">
+  <!--  background-image: linear-gradient(#071019, #2E2E2E,#071019 , #0A1B2A)-->
+  <div>
+    <table class="table">
+      <tr class="date">
+        <th rowspan="2"><h1>2D</h1></th>
+        <th colspan="2">Thứ 2,4,5</th>
+        <th colspan="2">Thứ 3</th>
+        <th colspan="2">Thứ 6,7,CN</th>
+      </tr>
+      <tr class="chair">
+        <th>Ghế thường</th>
+        <th class="vip">Ghế vip</th>
+        <th>Ghế thường</th>
+        <th class="vip">Ghế vip</th>
+        <th>Ghế thường</th>
+        <th class="vip">Ghế vip</th>
+      </tr>
+      <tr class="price" *ngFor="let item of ticket">
+        <th *ngIf="item.ticketType =='Giá vé 2D'">{{item.showTime}}</th>
+        <td *ngIf="item.ticketType =='Giá vé 2D'">{{item.thu245gt | number: '1.0-3' }}</td>
+        <td class="vip" *ngIf="item.ticketType =='Giá vé 2D'">{{item.thu245gv | number: '1.0-3' }}</td>
+        <td *ngIf="item.ticketType =='Giá vé 2D'">{{item.thu3gt | number: '1.0-3' }}</td>
+        <td class="vip" *ngIf="item.ticketType =='Giá vé 2D'">{{item.thu3gv | number: '1.0-3' }}</td>
+        <td *ngIf="item.ticketType =='Giá vé 2D'">{{item.thu67CNgt | number: '1.0-3' }}</td>
+        <td class="vip" *ngIf="item.ticketType =='Giá vé 2D'">{{item.thu67CNgv | number: '1.0-3' }}</td>
+      </tr>
+    </table>
+    <table class="table">
+      <tr class="date">
+        <th rowspan="2"><h1>3D</h1></th>
+        <th colspan="2">Thứ 2,4,5</th>
+        <th colspan="2">Thứ 3</th>
+        <th colspan="2">Thứ 6,7,CN</th>
+      </tr>
+      <tr class="chair">
+        <th>Ghế thường</th>
+        <th class="vip">Ghế vip</th>
+        <th >Ghế thường</th>
+        <th class="vip">Ghế vip</th>
+        <th>Ghế thường</th>
+        <th class="vip">Ghế vip</th>
+      </tr>
+      <tr class="price" *ngFor="let item of ticket">
+        <th *ngIf="item.ticketType =='Giá vé 3D'">{{item.showTime}}</th>
+        <td *ngIf="item.ticketType =='Giá vé 3D'">{{item.thu245gt | number: '1.0-3' }}</td>
+        <td class="vip" *ngIf="item.ticketType =='Giá vé 3D'">{{item.thu245gv | number: '1.0-3' }}</td>
+        <td *ngIf="item.ticketType =='Giá vé 3D'">{{item.thu3gt | number: '1.0-3' }}</td>
+        <td class="vip" *ngIf="item.ticketType =='Giá vé 3D'">{{item.thu3gv | number: '1.0-3' }}</td>
+
+        <td *ngIf="item.ticketType =='Giá vé 3D'">{{item.thu67CNgt | number: '1.0-3' }}</td>
+        <td class="vip" *ngIf="item.ticketType =='Giá vé 3D'">{{item.thu67CNgv | number: '1.0-3' }}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+

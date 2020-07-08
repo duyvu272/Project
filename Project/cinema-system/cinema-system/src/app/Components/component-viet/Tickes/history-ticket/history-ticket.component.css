@@ -1,0 +1,62 @@
+.history-ticket{
+  height: 100%;
+  width:70%;
+  background-color: white;
+  border-radius: 20px;
+  margin-left:15%;
+  font-family: 'Fredoka One', cursive;
+  font-size:20px;
+  color: #222;
+}
+#checkboxPointPlus{
+  font-size: 15px;
+  margin-left: 140px;
+}
+#checkboxPointUse{
+  font-size: 15px;
+  margin-left: 150px;
+}
+#exampleRadios2{
+  margin-top: 11px;
+  margin-left:120px;
+}
+#exampleRadios1{
+  margin-top: 11px;
+  margin-left: 110px;
+}
+#heading-loginInfo {
+  height: 10%;
+  width: 100%;
+  background-color: rgb(238, 230, 215) !important;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  text-align: center;
+  padding-top: 8px;
+}
+#input-dateEnd{
+  width: 60%;
+  margin-left: 108px;
+}
+#input-dateStart{
+  width: 60%;
+  margin-left: 83px;
+}
+
+#input-Address{
+  width: 60%;
+  margin-left: 90px;
+}
+#btn-watchPoint{
+
+  margin-top:20px;
+  margin-left: 40%;
+}
+#tablePoint{
+  margin-left: 10%;
+  margin-top: 3%;
+  width:80%;
+}
+#page{
+  font-size: 15px;
+  padding-left: 280px;
+}

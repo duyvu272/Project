@@ -1,0 +1,69 @@
+<h5>Thông tin đặt vé</h5>
+<div class="row ml-3" *ngIf="customer&&movie">
+    <div class="col-md-3">
+        <img [src]="movie.srcImg" alt="img">
+    </div>
+    <div class="col-md-9 ">
+        <h5 class="row">{{movie.movieName}}</h5>
+        <hr>
+        <div class="row">
+            <label class=" col-4"><strong>Màn hình: </strong></label>
+            <p class=" col-8">{{showRoom.screen}}</p>
+        </div>
+        <hr>
+        <div class="row">
+            <label class="col-4"><strong>Mã đặt vé: </strong></label>
+            <p class="col-8">{{ticket.bookedTicketCode}}</p>
+        </div>
+        <hr>
+        <div class="row">
+            <label class="col-4"><strong>Ngày chiếu: </strong></label>
+            <p class="col-8">{{movieSchedules.openingDay|date}}</p>
+        </div>
+        <hr>
+        <div class="row">
+            <label class="col-4"><strong>Giờ chiếu</strong></label>
+            <p class="col-8">{{movieSchedules.showTime.hourStart}}</p>
+        </div>
+        <hr>
+        <div class="row">
+            <label class="col-4"><strong>Ghế</strong></label>
+            <p class="col-8">{{seat[0].name+seat[0].seatNumber}}</p>
+        </div>
+        <hr>
+        <div class="row">
+            <label class="col-4"><strong>Giá: </strong></label>
+            <p class="col-8">
+                {{ticket.price}}
+            </p>
+        </div>
+        <hr>
+        <div class="row">
+            <label class="col-4"><strong>Tổng cộng: </strong></label>
+            <p class="col-8">{{ticket.price}}</p>
+        </div>
+        <h6 class="row">Thông tin tài khoản đặt vé</h6>
+        <hr>
+        <div class="row">
+            <label class="col-4"><strong>Họ tên: </strong></label>
+            <p class="col-8">{{customer.fullName}}</p>
+        </div>
+        <hr>
+        <div class="row">
+            <label class="col-4"><strong>Email: </strong></label>
+            <p class="col-8">{{customer.email}}</p>
+        </div>
+        <hr>
+        <div class="row">
+            <label class="col-4"><strong>CMND: </strong></label>
+            <p class="col-8">{{customer.idCard}}</p>
+        </div>
+        <hr>
+        <div class="row">
+            <label class="col-4"><strong>Số điện thoại: </strong></label>
+            <p class="col-8">{{customer.phone}}</p>
+        </div>
+      <p class="row">Vui lòng đến lấy vé trước thời gian chiếu phim 30 phút. Sau thời gian đó vé sẽ tự động hủy!</p>
+    </div>
+    <button style="margin-left:40% ;" class="btn btn-primary" [routerLink]="['']" routerLinkActive="router-link-active" >Hoàn tất</button>
+</div>

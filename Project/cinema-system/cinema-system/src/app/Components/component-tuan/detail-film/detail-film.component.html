@@ -1,0 +1,96 @@
+<div class="container" style="margin-bottom: 100px; width: 70%">
+  <h2 style="padding: 5px; color: #007bff">Xem chi tiết phim</h2>
+  <hr />
+  <div class="row">
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+      <h4 style="font-size: 140%">Nội dung phim</h4>
+      <img id="image-main"
+           src="{{filmDetail?.srcImg}}"
+           alt="{{filmDetail?.movieName}}" title="{{filmDetail?.movieName}}" style=" height: 300px; width: 250px; margin-left: 20px">
+    </div>
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 mt-4">
+      <strong style="font-size: 140%; color: #007bff"> {{filmDetail?.movieName}}</strong>
+      <hr class="my-0 mt-2">
+      <div class="d-flex mt-1">
+        <strong class="d-flex col-3">Khởi chiếu:</strong>
+        <span class="col-9" style="margin-left: 25px; margin-bottom: 1%">Từ  {{filmDetail?.dateStart |date:'dd-MM-yyyy'}}
+          đến  {{filmDetail?.dateEnd | date:'dd-MM-yyyy'}}</span>
+      </div>
+
+      <hr class="my-0">
+      <div class="d-flex mt-1">
+        <strong class="d-flex col-3">Loại phim:</strong>
+        <p class="col-9" style="margin-left: 25px; margin-bottom: 1%"> {{filmDetail?.movieType}}</p>
+      </div>
+      <hr class="my-0">
+      <div class="d-flex mt-1">
+        <strong class="d-flex col-3">Diễn viên:</strong>
+        <p class="col-9" style="margin-left: 25px; margin-bottom: 1%"> {{filmDetail?.actor}}</p>
+      </div>
+
+      <hr class="my-0">
+      <div class="d-flex mt-1">
+        <strong class="d-flex col-3">Đạo diễn:</strong>
+        <p class="col-9" style="margin-left: 25px; margin-bottom: 1%"> {{filmDetail?.directors}}</p>
+      </div>
+      <hr class="my-0">
+      <div class="d-flex mt-1">
+        <strong class="d-flex col-3">Thời lượng:</strong>
+        <p class="col-9" style="margin-left: 25px; margin-bottom: 1%"> {{filmDetail?.duration}} phút</p>
+      </div>
+
+      <hr class="my-0">
+      <div class="d-flex mt-1">
+        <strong class="d-flex col-3">Hãng:</strong>
+        <p class="col-9" style="margin-left: 25px; margin-bottom: 1%"> {{filmDetail?.movieStudio}}</p>
+      </div>
+      <hr class="my-0">
+      <a href="#" class="btn btn-primary my-3" > <i class="fa fa-ticket" ></i> Đặt vé </a>
+    </div>
+
+    <div class="container mt-3">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" href="#home">Tóm tắt nội dung</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#menu1">Trailer</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#menu2">Lịch chiếu</a>
+        </li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div id="home" class="container tab-pane active"><br>
+          <h4>Tóm tắt nội dung</h4>
+          <p> {{filmDetail?.content}}</p>
+        </div>
+
+        <div id="menu1" class="container tab-pane fade"> <br>
+          <h4>Trailer</h4>
+          <br>
+          <div>
+            <iframe  [src]="sanitizer.bypassSecurityTrustResourceUrl(filmDetail?.srcVideo)" width="560" height="315"
+                     frameborder="0" allow="autoplay; encrypted-media" allowfullscreen> </iframe>
+          </div>
+        </div>
+
+        <div id="menu2" class="container tab-pane fade d-flex justify-content-between row" >
+          <div class="card bg-light m-3 col-xs-3 col-sm-3 col-md-3 col-lg-3"
+               style="max-width: 18rem;" *ngFor="let item of dayHours;">
+
+            <div class="card-header" >
+              <h5 align="center">{{item[0]| date:'dd/MM/yyyy'}}</h5>
+            </div>
+            <div class="card-body " *ngFor="let hour of item[1]" >
+              <label class="card-text ">{{hour}}</label>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

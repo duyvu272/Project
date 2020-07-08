@@ -1,0 +1,185 @@
+<div class="container-fluid px-0" style="height: 100vh">
+  <app-top-bar></app-top-bar>
+  <div class="container row px-0 mx-0 d-flex justify-content-beetween" style="height: 90%">
+    <div class="card col-8">
+      <div class="card-header ">
+        <h4><strong>Đăng ký tài khoản</strong></h4>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="formAddnewAccount">
+          <div class="form-group row">
+            <label for="staticTaikhoan" class="col-sm-3 col-form-label d-flex justify-content-end">Tên đăng nhập<span
+              class="star">(*)</span></label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="staticTaikhoan" formControlName="account">
+              <div style="color: red" *ngIf="formAddnewAccount.get('account').invalid&&
+      formAddnewAccount.get('account').touched">
+        <span *ngIf="formAddnewAccount.get('account').invalid&&formAddnewAccount.get('account')
+        .getError('required')">
+          Account is required</span>
+                <span *ngIf="formAddnewAccount.get('account').invalid&&formAddnewAccount.get('account')
+        .getError('minlength')">
+          Account is minlength 6</span>
+              </div>
+              <span style="color: red" *ngIf="check">Tài khoản đã tồn tại</span>
+            </div>
+          </div>
+          <fieldset formGroupName="pwGroup">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label d-flex justify-content-end">
+                Password<span class="star">(*)</span>
+              </label>
+              <div class="col-sm-9">
+                <input type="password" class="form-control" formControlName="password">
+                <div style="color: red" *ngIf="formAddnewAccount.get('pwGroup').get('password').invalid&&
+      formAddnewAccount.get('pwGroup').get('password').touched">
+        <span *ngIf="formAddnewAccount.get('pwGroup').get('password').invalid&&formAddnewAccount.get('pwGroup').get('password')
+        .getError('required')">
+          Cần nhập mật khẩu</span>
+                  <span *ngIf="formAddnewAccount.get('pwGroup').get('password').invalid&&formAddnewAccount.get('pwGroup').get('password')
+        .getError('minlength')">
+         Độ dài mật khẩu > 5</span>
+                  <span *ngIf="formAddnewAccount.get('pwGroup').get('password').invalid&&formAddnewAccount.get('pwGroup').get('password')
+        .getError('pattern')">
+          Mật khẩu không đúng định dạng</span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label d-flex justify-content-end">
+                ConfirmPassword<span class="star">(*)</span>
+              </label>
+              <div class="col-sm-9">
+                <input type="password" class="form-control" formControlName="confirmPassword">
+                <div style="color: red" *ngIf="formAddnewAccount.hasError('passwordnotmatch', ['pwGroup']) &&
+      formAddnewAccount.get('pwGroup').touched">
+                 Mật khẩu không khớp!
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <div class="form-group row">
+            <label for="inputHoten" class="col-sm-3 col-form-label d-flex justify-content-end">Fullname<span
+              class="star">(*)</span></label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="inputHoten" formControlName="fullName">
+              <div style="color: red" *ngIf="formAddnewAccount.get('fullName').invalid&&
+      formAddnewAccount.get('fullName').touched">
+        <span *ngIf="formAddnewAccount.get('fullName').invalid&&formAddnewAccount.get('fullName')
+        .getError('required')">
+          Full name is required</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+                        <label for="inputNgaysinh" class="col-sm-3 col-form-label d-flex justify-content-end mt-4">Birthday<span
+                          class="star">(*)</span></label>
+                        <div class="col-sm-4">
+                          <mat-form-field>
+                            <input [min]="minDate" [max]="maxDate" id="inputNgaysinh" class="form-control"
+                                   formControlName="dateOfBirth" matInput [matDatepicker]="myDatepicker">
+                            <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+                            <mat-datepicker #myDatepicker></mat-datepicker>
+                          </mat-form-field>
+                        </div>
+            <label for="customRadioInline1" class="col-sm-2 col-form-label d-flex justify-content-end mt-4">Gender<span
+                class="star">(*)</span></label>
+            <div class="col-sm-3">
+              <div class="custom-control custom-radio custom-control-inline mt-4">
+                <input type="radio" id="customRadioInline1" value="Male" class="custom-control-input"
+                       formControlName="gender">
+                <label class="custom-control-label" for="customRadioInline1">Male</label>
+              </div>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline2" value="Female" class="custom-control-input"
+                       formControlName="gender">
+                <label class="custom-control-label" for="customRadioInline2">Female</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputCmnd" class="col-sm-3 col-form-label d-flex justify-content-end">Idcard<span
+              class="star">(*)</span></label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="inputCmnd" formControlName="idCard">
+              <div style="color: red" *ngIf="formAddnewAccount.get('idCard').invalid&&
+      formAddnewAccount.get('idCard').touched">
+        <span *ngIf="formAddnewAccount.get('idCard').invalid&&formAddnewAccount.get('idCard')
+        .getError('required')">
+          ID card is required</span>
+                <span *ngIf="formAddnewAccount.get('idCard').invalid&&formAddnewAccount.get('idCard')
+        .getError('pattern')">
+          ID card is not Malformed</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputEmail" class="col-sm-3 col-form-label d-flex justify-content-end">Email<span
+              class="star">(*)</span></label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="inputEmail" formControlName="email">
+              <div style="color: red" *ngIf="formAddnewAccount.get('email').invalid&&
+      formAddnewAccount.get('email').touched">
+        <span *ngIf="formAddnewAccount.get('email').invalid&&formAddnewAccount.get('email')
+        .getError('required')">
+          Email is required</span>
+                <span *ngIf="formAddnewAccount.get('email').invalid&&formAddnewAccount.get('email')
+        .getError('email')">
+          Email is not Malformed,Email format is peter@gmail.com</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputDiachi" class="col-sm-3 col-form-label d-flex justify-content-end">Address<span
+              class="star">(*)</span></label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="inputDiachi" formControlName="address">
+              <div style="color: red" *ngIf="formAddnewAccount.get('address').invalid&&
+      formAddnewAccount.get('address').touched">
+        <span *ngIf="formAddnewAccount.get('address').invalid&&formAddnewAccount.get('address')
+        .getError('required')">
+          Address is required</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputSodienthoai" class="col-sm-3 col-form-label d-flex justify-content-end">Phonenumber<span
+              class="star">(*)</span></label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="inputSodienthoai" formControlName="phone">
+              <div style="color: red" *ngIf="formAddnewAccount.get('phone').invalid&&
+      formAddnewAccount.get('phone').touched">
+        <span *ngIf="formAddnewAccount.get('phone').invalid&&formAddnewAccount.get('phone')
+        .getError('required')">
+          Phone is required</span>
+                <span *ngIf="formAddnewAccount.get('phone').invalid&&formAddnewAccount.get('phone')
+        .getError('pattern')">
+          Phone is not Malformed,phone with 10 numbers and phone is format 090|091</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3">
+            </label>
+            <label class="col-sm-9">
+              <span style="color: red" *ngIf="show">Please accept the terms of membership</span>
+              <input type="checkbox" (click)="toggleshow()">
+              <span *ngIf="!show">I understand all the rules about membership</span>
+            </label>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3">
+            </label>
+            <div class="col-sm-9">
+              <button class="btn btn-primary mr-3" (click)="addNewAccount()">Registration</button>
+              <button class="btn btn-primary" (click)="exit()">Cancel registration</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="rowright col-4 p-20">
+      <app-carousel></app-carousel>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div id="ticket-booking">
+  <h2 id="listTicketBooking" style="margin-left: 30px">Tickets Booking List</h2>
+  <div class="d-flex" id="search">
+    <input class="form-control " type="text" placeholder="Search Ticket " style="width:400px" [(ngModel)]="term1">
+    <button class="btn btn-success" type="submit" style="height: 46px" id="btnSearch">Search</button>
+  </div>
+
+
+
+  <div class="row">
+    <table id="tableEmployee" class="table table-bordered table-hover" >
+      <thead>
+      <tr style="text-align: center">
+        <th id="Movie Name">Movie Name</th>
+        <th id="ID Booking">ID Booking</th>
+        <th id="Total Money">Total Money</th>
+        <th id="Status">Status</th>
+      </tr>
+      </thead>
+      <tbody style="text-align: center">
+      <tr *ngFor="let status of statusTickets3  |paginate: { itemsPerPage: 3, currentPage: page } | filter:term1" style="font-family: 'DM Sans', sans-serif;">
+        <td>{{status.movieSchedules["movie"].movieName}}</td>
+        <td>{{status.bookedTicketCode}}</td>
+        <td>{{status.price}}</td>
+        <td>{{status.orderStatus}}</td>
+      </tr>
+
+      </tbody>
+    </table>
+    <div id="page"> <pagination-controls (pageChange)="page = $event"></pagination-controls></div>
+  </div>
+</div>

@@ -1,0 +1,78 @@
+
+<nav style=" font-family: 'Roboto', cursive;
+
+font-size:20px;
+color: #222;" id="nav-bar" class="navbar navbar-expand-md navbar-custome sticky-top">
+  <a class="navbar-branch" href="#">
+    <img id="logo" src="../assets/images/logoCGV.png" height="75" width="230" alt="logo" style="height: 65px;">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse"
+          data-target="#navbarResponsive">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarResponsive">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link active" href="#"><b>Trang chủ</b></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"><b>Rạp CGV</b></a>
+      </li>
+      <li class="nav-item" *ngIf="isLoggedIn">
+        <a class="nav-link" [routerLink]="['member']" ><b>Thành viên</b></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"><b>Khuyến mãi</b></a>
+      </li>
+
+
+      <li class="nav-item" *ngIf="showAdminBoard">
+        <div class="btn-group dropleft" style="padding-top: 10px">
+          <button type="button" class="btn btn-primary" data-toggle="dropdown" style="font-size: 11px;border-radius: 19px;background-color: #5cb85c;
+    border-color: #6bff53; margin-right: 10px">
+           Admin <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a [routerLink]=" ['booking-ticket']" >Quản lí đặt vé</a></li>
+            <li><a href="#">Quản lý nhân viên</a></li>
+            <li><a href="#">Quản lý phim</a></li>
+            <li><a href="#">Quản lý Khách hàng</a></li>
+            <li><a [routerLink]="['showRoom']">Quản lý rạp phim</a></li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="nav-item" *ngIf="!isLoggedIn">
+        <a class="nav-link" [routerLink]="['login']"><b>Đăng nhập</b></a>
+      </li>
+      <li class="nav-item" *ngIf="!isLoggedIn">
+        <a class="nav-link" [routerLink]="['register']"><b>Đăng kí</b></a>
+      </li>
+      <li class="nav-item" *ngIf="isLoggedIn">
+        <div class="btn-group dropleft" style="padding-top: 10px">
+          <button type="button" class="btn btn-primary" data-toggle="dropdown" style="font-size: 11px;border-radius: 19px;background-color: #000000;
+    border-color: #0f1011;">
+            {{username}} <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a [routerLink]=" [id,'account']" >Thông tin tài khoản</a></li>
+            <li><a href="#">Tin nhắn</a></li>
+          <li><a href="#">Quản lý tài khoản</a></li>
+            <li class="divider"></li>
+            <li><a (click)="logout()">Đăng xuất</a></li>
+          </ul>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+
+</nav>
+
+
+<router-outlet></router-outlet>
+
+<!--<app-paypal></app-paypal>-->
+<!--<app-member-management></app-member-management>-->
+
+

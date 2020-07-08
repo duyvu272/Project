@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row p-5 justify-content-between">
+    <h2 style="color: #007bff"> Phim Đang Chiếu</h2>
+    <div class="d-flex">
+      <input class="form-control" placeholder="Tìm kiếm theo phim"  style="width: 300px; height: 30px" [(ngModel)]="search" >
+      <i class="fas fa-search" style="height: 30px; width: 30px;  border: solid lightsteelblue 0.1px; padding: 5px 5px 0 5px">
+      </i>
+    </div>
+
+  </div>
+  <div class="d-flex row list-film">
+    <div class=" col-xs-3 col-sm-3 col-md-3 col-lg-3" *ngFor="let item of film | filter:search | paginate: { itemsPerPage: 8, currentPage: page }">
+      <div>
+        <a [routerLink]="['/film-detail/'+item.id]" title="{{item.movieName}}">
+          <img src="{{item.srcImg}}">
+        </a>
+        <div class="product-info" >
+          <h2 class="product-name mt-2">
+            <a style="color: #007bff" [routerLink]="['/film-detail/'+item.id]" title="{{item.movieName}}"> {{item.movieName}}</a>
+          </h2>
+
+          <div class="movie-info">
+            <span class="movie-info-bold">Thể loại: </span>
+            <span class="movie-info-normal">{{item.movieType}}</span>
+          </div>
+          <div class="movie-info">
+            <span class="movie-info-bold">Thời lượng: </span>
+            <span class="movie-info-normal">{{item.duration}} phút</span>
+          </div>
+          <div class="movie-info">
+            <span class="movie-info-bold">Khởi chiếu: </span>
+            <span class="movie-info-normal">{{item.dateStart | date:'dd/MM/yyyy'}}</span>
+          </div>
+          <a href="#" class="btn btn-primary" style="width: 30%" [routerLink]="['/booking']" routerLinkActive="router-link-active"  [state]="{movie:item}">Đặt vé</a>
+          <a href="#" class="btn btn-default" style="width: 30%" [routerLink]="['/film-detail/'+item.id]">Chi tiết</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <pagination-controls (pageChange)="page = $event" align="center"></pagination-controls>
+</div>

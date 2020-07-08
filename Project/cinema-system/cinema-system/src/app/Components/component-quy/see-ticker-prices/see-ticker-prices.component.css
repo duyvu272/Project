@@ -1,0 +1,28 @@
+table th, td {
+}
+
+.date {
+  font-family: serif;
+  font-size: 32px;
+}
+
+.chair {
+
+  font-family: serif;
+  font-size: 18px;
+
+}
+
+.price {
+
+  font-family: serif;
+}
+.vip{
+
+  animation:blinkingText 1.2s infinite;
+}
+
+@keyframes blinkingText{
+  100%{   color: red;    }
+}
+

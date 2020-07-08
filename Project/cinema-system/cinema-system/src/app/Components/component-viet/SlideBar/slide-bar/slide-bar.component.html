@@ -1,0 +1,39 @@
+
+
+<div class="container-fluid px-0" style="height: 100vh">
+  <div id="top-bar">
+    <app-top-bar style="width: 100%"></app-top-bar>
+  </div>
+  <div id="slide-bar" class="row">
+    <div class="col-2">
+
+      <div class="bg-light border-light" id="sidebar-wrapper">
+        <div class="sidebar-heading" id="hello-slide-bar">
+          <p><img src="assets/images/avatarAccount.JPG" id="avatarAccount" alt="avatar"></p>
+          <a href="" style="color: #222222" [routerLink]="[memberAvatar.id,'show']"><strong>Hello {{memberAvatar.user['username']}}</strong></a>
+          <div><strong  class="item-slide-bar" ><span class="glyphicon glyphicon-heart-empty"></span> Point:{{pointSum}}</strong></div>
+        </div>
+
+        <div class="list-group">
+
+
+          <a href="#" class="list-group list-group-item" [routerLink]="[memberAvatar.id,'changeInformation']"><strong class="item-slide-bar"><span class="glyphicon glyphicon-user"></span> Change Information account </strong>
+          </a>
+          <a href="#" class="list-group list-group-item" [routerLink]="[memberAvatar.id,'history-ticket']"><strong class="item-slide-bar"><span class="glyphicon glyphicon-list-alt"></span> History</strong>
+          </a>
+          <a href="#" class="list-group list-group-item"  [routerLink]="[memberAvatar.id,'ticket-booking']"><strong class="item-slide-bar"><span class="glyphicon glyphicon-ok"></span> Tickets booked</strong> </a>
+          <a href="#" class="list-group list-group-item" [routerLink]="[memberAvatar.id,'ticket-canceled']"><strong class="item-slide-bar"> <span class="glyphicon glyphicon-remove"></span> Ticket canceled</strong></a>
+        </div>
+        <button class="btn btn-danger" id="btn-logout" [routerLink]="['']">Log out</button>
+      </div>
+
+    </div>
+    <div class="col-10 p-2">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+
+
+

@@ -1,0 +1,22 @@
+
+<div id="cssSidebar"  class="container-fluid px-0" style="height: 100vh; "  >
+<div id="slide-bar" class="row">
+  <div class="col-2">
+    <div class="bg-light border-light" id="sidebar-wrapper">
+      <div class="sidebar-heading" id="hello-slide-bar">
+        <p><img src="assets/images/avatarAccount.JPG" id="avatarAccount" alt="avatar"></p>
+        <a href="" style="color: #222222"   style="font-size: 20px"><strong>Hello </strong></a>
+      </div>
+      <div class="list-group">
+        <button href="#" class="list-group list-group-item" (click)="showRoomList()"><strong class="item-slide-bar"
+        style="font-family: Roboto;"><span class="glyphicon glyphicon-facetime-video"></span> Quản lý rạp</strong>
+        </button>
+      </div>
+      <button class="btn btn-danger" id="btn-logout" [routerLink]="['']" style="font-family: Roboto;">Đăng xuất</button>
+    </div>
+  </div>
+  <div class="col-10">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+</div>

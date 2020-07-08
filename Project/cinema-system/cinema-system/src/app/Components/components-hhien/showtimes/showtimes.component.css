@@ -1,0 +1,62 @@
+#bg {
+  background-color: rgba(255, 243, 22, 0.07);
+}
+
+#title {
+  text-align: center;
+
+  background-color: rgb(238, 230, 215) !important;
+height: 60px;
+  width: 100%;
+  border-radius: 10px;
+  padding: 0;
+  margin: 0;
+  font-family: 'Modak';
+  font-size: 50px;
+}
+#title1 {
+   margin-top: 50px;
+   height: 40px;
+   width: 100%;
+   text-align: center;
+  background-color: rgb(238, 230, 215) !important;
+   border-radius: 10px;
+   font-size: 25px;
+ margin-left: 0px;
+  font-family: 'Modak';
+ }
+
+
+
+
+
+
+.form-control {
+
+}
+
+.image-film {
+  width: 100%;
+  height: auto;
+  margin-top: 5px;
+  border-bottom: 1px solid #a2a2a2
+}
+
+span {
+  margin-top: 20px;
+}
+
+ul{
+  list-style: none
+}
+
+li{
+  width: 250px;
+}
+
+#option{
+  background-color: rgba(121, 226, 208, 0.17);
+}
+/*#select{*/
+/*  background-color: rgba(255, 96, 74, 0.71);*/
+/*}*/

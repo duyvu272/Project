@@ -1,0 +1,26 @@
+p {
+  font-weight: normal;
+  margin-bottom: 0;
+}
+
+.btn{
+  margin-left: 2%;
+}
+
+.card {
+  width: 210px;
+  height: 290px;
+}
+.infoE{
+  margin-bottom: 15px;
+  height: 20px;
+}
+.use-point{
+  margin-left: 30px;
+}.lb{
+  margin-left: 5px;
+ }
+hr{
+  margin-top: 0.3rem;
+  margin-bottom: 10px;
+}

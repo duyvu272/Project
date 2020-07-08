@@ -1,0 +1,19 @@
+#logo{
+  border-radius: 10px;
+}
+
+.navbar li a {
+  color: black !important;
+  font-size: 15px;
+
+  margin-right: 20px;
+}
+#nav-bar{
+  margin-bottom: 5px;
+}
+.bg-light{
+  background-color:#ffffff !important;
+}
+/*#helloAccount{*/
+/* color: black;*/
+/*}*/

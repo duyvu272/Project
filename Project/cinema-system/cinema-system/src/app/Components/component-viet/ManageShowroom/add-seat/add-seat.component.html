@@ -1,0 +1,35 @@
+<h2 style="margin-left: 40%">Thêm ghế</h2>
+
+      <form class="w-80 mx-auto" [formGroup]="formSeat" >
+        <div class="d-flex" style="margin-top: 10px">
+          <div style="margin-left: 35px;font-size: 15px">Tên ghế:</div>
+          <input  style="margin-left: 23px" id="input-SeatName" class="form-control w-50" type="text" formControlName="name">
+        </div>
+
+        <div class="d-flex" style="margin-top: 10px">
+          <div style="margin-left: 35px;font-size: 15px">Hàng ghế:</div>
+          <input  style="margin-left: 10px" id="input-Row" class="form-control w-50" type="text" formControlName="row">
+        </div>
+
+        <div class="d-flex" style="margin-top: 10px">
+          <div style="margin-left: 35px;font-size: 15px">Số ghế:</div>
+          <input  style="margin-left: 28px" id="input-SeatNumber" class="form-control w-50" type="text" formControlName="seatNumber">
+        </div>
+
+        <div class=" d-flex" style="margin-top: 10px">
+          <div style="margin-left: 35px;font-size: 15px">Loại ghế: </div>
+          <select style="margin-left: 18px" id="input-SeatType" type="text" class="form-control w-50" formControlName="isVip" >
+            <option value=true >Ghế vip</option>
+            <option value=false >Ghế thường</option>
+          </select>
+        </div>
+
+        <div class="d-flex" id="btn-changInfor">
+        <button style="width: 60px; height: 30px; margin-left: 38%; margin-top: 20px"  class="btn btn-success" id="btn-addSeat" (click)="addSeat()"> Xác nhận
+        </button>
+          <button style="width: 50px;height: 30px; ;margin-left: 10px;margin-top: 20px"  class="btn btn-danger" id="btn-addSeat3" (click)="onClose()"> Hủy
+          </button>
+      </div>
+      </form>
+
+

@@ -1,0 +1,51 @@
+<table >
+    <mat-horizontal-stepper #stepper style="background-color: white;">
+      <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel >Chọn Phim</ng-template>
+          <mat-list  class="film">
+          <mat-list-item   >
+               <button mat-stroked-button matStepperNext color="primary" 
+               style="width: 100%; margin-left:0px" (click)="getI()" >
+            {{movie.movieName }} 
+            </button>
+            </mat-list-item> 
+           </mat-list> 
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+          <ng-template matStepLabel>Chọn Ngày</ng-template>
+          <mat-list  class="film">
+            <mat-list-item *ngFor="let item of dayList">
+                 <button mat-stroked-button matStepperNext color="primary"
+                 style="width: 100px; margin-left:0px"
+                   (click)="getHour()">{{item | date :"dd/MM/yyyy"}} </button> 
+              </mat-list-item>
+             </mat-list>         
+         </form>
+      </mat-step>
+      <mat-step [stepControl]="thirdFormGroup">
+        <form [formGroup]="thirdFormGroup">
+          <ng-template matStepLabel>Chọn Giờ</ng-template>
+          
+          <mat-list  class="hour">
+            <mat-list-item *ngFor="let item of timeList">
+                 <button mat-stroked-button matStepperNext color="primary" 
+                 style="width: 100px; margin-left:0px" >
+              {{item }} 
+              </button>
+              </mat-list-item>
+             </mat-list> 
+        </form>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Kết Thúc</ng-template>
+        <p>Đặt vé thành công</p>
+        <div>
+          <button mat-raised-button matStepperPrevious  color="primary" style="margin-right: 15px;">Chọn Giờ</button>
+          <button mat-raised-button (click)="stepper.reset()"  color="primary" [routerLink]="['/chon-ghe']" routerLinkActive="router-link-active" [state]="{movie:movie}">Chọn Ghế </button>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+</table>

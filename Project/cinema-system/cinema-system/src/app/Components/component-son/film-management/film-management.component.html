@@ -1,0 +1,52 @@
+<div class="container-fluid">
+  <div class="table-wrapper">
+    <div class="table-title">
+      <div class="row">
+        <div class="col-sm-8">
+          <h2>Quản lý <b>Phim</b></h2>
+        </div>
+        <div class="col-sm-4">
+          <button (click)="onAddRow()" type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Thêm mới</button>
+        </div>
+      </div>
+    </div>
+    <table class="table table-bordered text-center">
+      <thead>
+        <tr>
+          <th style="width: 40px">#</th>
+          <th style="width: 170px">Phim</th>
+          <th style="width: 125px">Ngày khởi chiếu</th>
+          <th style="width: 125px">Ngày kết thúc</th>
+          <th>Hãng phim</th>
+          <th style="width: 50px">Thời lượng</th>
+          <th>Diễn viên</th>
+          <th>Thể loại phim</th>
+          <th>Đạo diễn</th>
+          <th>Nội dung phim</th>
+          <th>src_Img</th>
+          <th>src_video</th>
+          <th style="width: 90px">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of movies let i = index" style="cursor: pointer;" [routerLink]="['/edit-film,movies[i].id']">
+          <td style="text-align: center;"> <a href="#">{{ i+1 }}</a> </td>
+          <td><input [(ngModel)]="movies[i].movieName" class="form-control" type="text" /></td>
+          <td><input [(ngModel)]="movies[i].dateStart" class="form-control" type="text" /></td>
+          <td><input [(ngModel)]="movies[i].dateEnd" class="form-control" type="text" /></td>
+          <td><input [(ngModel)]="movies[i].movieStudio" class="form-control" type="text" /></td>
+          <td><input [(ngModel)]="movies[i].duration" class="form-control" type="text" /></td>
+          <td class="text-truncate" style="max-width: 200px;"><input [(ngModel)]="movies[i].actor" class="form-control" type="text" /></td>
+          <td><input [(ngModel)]="movies[i].movieType" class="form-control" type="text" /></td>
+          <td><input [(ngModel)]="movies[i].directors" class="form-control" type="text" /></td>
+          <td class="text-truncate" style="max-width: 200px;"><input [(ngModel)]="movies[i].content" class="form-control" type="text" /></td>
+          <td class="text-truncate"><input [(ngModel)]="movies[i].srcImg" class="form-control" type="text" /></td>
+          <td class="text-truncate"><input [(ngModel)]="movies[i].srcVideo" class="form-control" type="text" /></td>
+          <td><button (click)="addRow(i)" type="button" class="btn btn-info add-new" ><i class="fa fa-plus"></i></button>
+            <button (click)="onEdit(i)" type="button" class="btn btn-warning" style="margin-left: 2px"><i class="fa fa-pen"></i></button></td>
+        </tr>
+      </tbody>
+    </table>
+    <button [routerLink]="['/add-film']" type="button" class="btn btn-primary">Thêm mới phim</button>
+  </div>
+</div>

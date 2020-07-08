@@ -1,0 +1,20 @@
+<h2 style="margin-left: 40%">Thêm phòng chiếu</h2>
+
+<form class="w-80 mx-auto" [formGroup]="formShowroom" >
+  <div class="d-flex" style="margin-top: 10px">
+    <div style="margin-left: 35px;font-size: 15px">Tên rạp:</div>
+    <input  style="margin-left: 23px" id="input-SeatName" class="form-control w-50" type="text" formControlName="nameShowroom">
+  </div>
+
+  <div class="d-flex" style="margin-top: 10px">
+    <div style="margin-left: 35px;font-size: 15px">Màn hình:</div>
+    <input  style="margin-left: 10px" id="input-Row" class="form-control w-50" type="text" formControlName="screen">
+  </div>
+
+  <div class="d-flex" id="btn-changInfor">
+    <button style="width: 60px; height: 30px; margin-left: 38%; margin-top: 20px"  class="btn btn-success" id="btn-addSeat" (click)="addShowroom()"> Xác nhận
+    </button>
+    <button style="width: 50px;height: 30px; ;margin-left: 10px;margin-top: 20px"  class="btn btn-danger" id="btn-addSeat3" (click)="onClose()"> Hủy
+    </button>
+  </div>
+</form>

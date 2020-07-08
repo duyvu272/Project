@@ -1,0 +1,136 @@
+<div class="container" style="margin-bottom: 20px; background-color: #fdfcf0">
+  <h2 style="padding: 5px">Xác nhận đặt vé</h2>
+  <hr/>
+  <div class="row">
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+      <img id="image-main" class="gallery-image visible" alt="img" src="{{ ticket?.movieSchedules.movie.srcImg }}"
+           style="width: 210px; margin-left: 20px">
+    </div>
+    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+      <label style="font-size: 140%; color: red">{{ ticket?.movieSchedules.movie.movieName }}</label>
+      <hr>
+      <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <strong>Rạp chiếu: </strong>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+          <p>{{ ticket?.seat.row.showRoom.screen }}</p>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <strong>Ngày chiếu: </strong>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+          <p>{{ ticket?.movieSchedules.movie.dateStart }}</p>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <strong>Giờ chiếu: </strong>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+          <p>{{ ticket?.movieSchedules.showTime.hourStart }}</p>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <strong>Ghế: </strong>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+          <p>{{ticket?.seat.name}}</p>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <strong>Giá: </strong>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+          <p>{{ ticket.price | currency : 'VND' }}</p>
+        </div>
+      </div>
+
+      <hr>
+      <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <strong>Tổng cộng: </strong>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+         <p> <strong style="color: green">{{ ticket.price | currency : 'VND' }}</strong></p>
+        </div>
+      </div>
+
+
+      <br>
+      <label style="font-size: 140%">Thông tin thành viên</label>
+      <form [formGroup]="form">
+      <div style="font-size: 16px;font-weight: bold">
+        <div class="row infoE">
+          <div class="col-sm-3 ">
+            <p class="info"><strong>Mã thành viên :</strong></p>
+          </div>
+          <div class="col-sm-9">TV{{ticket?.customer.id}}</div>
+        </div>
+        <div class="row infoE">
+          <div class="col-sm-3">
+            <p class="info"><strong>CMND :</strong></p>
+          </div>
+          <div class="col-sm-9">{{ticket?.customer.idCard}}</div>
+        </div>
+        <div class="row infoE">
+          <div class="col-sm-3">
+            <p class="info"><strong>Họ tên :</strong></p>
+          </div>
+          <div class="col-sm-9">{{ticket?.customer.fullName}}</div>
+        </div>
+        <div class="row infoE">
+          <div class="col-sm-3">
+            <p class="info"><strong>Điểm thành viên :</strong></p>
+          </div>
+          <div class="col-sm-9" style="color: #5cb85c">{{point}}đ</div>
+        </div>
+        <div class="row infoE">
+          <div class="col-sm-3">
+            <p class="info"><strong>Đổi vé :</strong></p>
+          </div>
+          <div class="col-sm-9">
+            <input type="radio"  value="0" formControlName="use_point" id="1" checked> <label for="1" class="lb">0</label>
+            <input type="radio" class="use-point" value="1" formControlName="use_point" id="2"><label for="2" class="lb">1</label>
+            <input type="radio" class="use-point" value="2" disabled formControlName="use_point" id="3"><label for="3" class="lb">2</label>
+          </div>
+        </div>
+
+        <div class="row infoE">
+          <div class="col-sm-3">
+            <p class="info"><strong>Thanh toán :</strong></p>
+          </div>
+          <div class="col-sm-9">
+            <input type="radio" id="paypal" value="paypal" formControlName="use_point" id="10" >
+            <img src="../../../../../assets/images/paypal-logo.jpg" alt="paypal" style="width: 80px;margin-left: 10px;">
+            <input type="radio"  value="visa" id="visa"formControlName="use_point" id="11" style="margin-left: 20px" >
+            <img src="../../../../../assets/images/visa.png" alt="visa" style="width: 80px;margin-left: 10px;">
+          </div>
+        </div>
+
+        <div class="row infoE">
+          <div class="col-sm-3">
+            <p class="info"><strong>Số điện thoại :</strong></p>
+          </div>
+          <div class="col-sm-9">{{ticket?.customer.phone}}</div>
+        </div>
+      </div>
+      <input type="button" value="Xác nhận nhận vé" class="btn-primary" id="submit" (click)="submit()" style="width: 140px;height: 30px;border-radius: 12px">
+        <div *ngIf=paidFor>
+          <input type="button" class="btn-success" value="Chi tiết vé" (click)="submitPaypal()" style="width: 140px;height: 30px;border-radius: 12px">
+        </div>
+      </form>
+      <div  id="showPaypal" style="margin-top: 30px;width: 200px; margin-left: 25%"></div>
+    </div>
+
+  </div>
+</div>
+

@@ -1,0 +1,22 @@
+<div style="font-family: Roboto; font-size: 35px; margin-top: 20px;"><b>Chi tiết phòng PC{{idShowroom}}</b> </div>
+<div class="d-flex" style="margin-left: 70%; margin-top: 5px">
+  <div id="vip"></div>
+  <div id="normal"></div>
+</div>
+<div class="d-flex" style="margin-left: 70%; margin-bottom: 5px">
+  <div id="vip1">Ghế vip</div>
+  <div id="normal1">Ghế thường</div>
+</div>
+<button style="margin-top:0px;margin-left: 57px; margin-bottom: 10px ;width: 100px; height:45px; font-size:18px; font-family: Roboto; border-radius: 10px"
+        class="btn btn-success" (click)="addSeat()"> Thêm ghế </button>
+<div class="col-10 mx-0 d-flex flex-row flex-wrap" style="margin-top: 10px">
+  <ul *ngFor="let seats of seatShowroom; let i = index">
+    <button (click)="changeTypeSeat(i)" type="button"
+            style="height: 50px; width: 70px; margin-top: 10px; border-radius: 10px; border-color: rgba(255,255,255,0.37);color: white"
+            [style.background-color]="seats.vip === true ?
+     'crimson':'rgba(21,104,197,0.76)'">{{seats.name}}</button>
+  </ul>
+</div>
+
+
+

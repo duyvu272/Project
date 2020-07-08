@@ -1,0 +1,13 @@
+<h2>hộp thoại xác nhận sự lựa chọn của bạn</h2>
+<hr>
+<p>Bạn chọn ngày để lọc phim</p>
+<div class="row d-flex ">
+<!--  <button class="mr-3" mat-flat-button color="primary">Hủy bỏ</button>-->
+<!--  <button class="mr-3" mat-flat-button color="warn">Xóa</button>-->
+        <mat-form-field>
+          <mat-label>Ngày bạn chọn</mat-label>
+          <input matInput [matDatepicker]="picker1" [formControl]="date">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+</div>

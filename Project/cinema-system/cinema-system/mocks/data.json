@@ -1,0 +1,199 @@
+{
+  "students": [
+    {
+      "url": "asd",
+      "description": "asd123",
+      "id": 6
+    },
+    {
+      "url": "bcvb123",
+      "description": "xcv123",
+      "id": 8
+    }
+  ],
+  "awesomes": [],
+  "positions": [
+    {
+      "name": "A",
+      "seats": [
+        {
+          "number": 1,
+          "isBooked": false,
+          "isVip": false,
+          "isSelecting": false
+        },
+        {
+          "number": 2,
+          "isBooked": false,
+          "isVip": true,
+          "isSelecting": false
+        },
+        {
+          "number": 3,
+          "isBooked": false,
+          "isVip": true,
+          "isSelecting": false
+        },
+        {
+          "number": 4,
+          "isBooked": false,
+          "isVip": true,
+          "isSelecting": false
+        },
+        {
+          "number": 5,
+          "isBooked": true,
+          "isVip": false,
+          "isSelecting": false
+        }
+      ]
+    },
+    {
+      "name": "B",
+      "seats": [
+        {},
+        {
+          "number": 2,
+          "isBooked": false,
+          "isVip": false,
+          "isSelecting": false
+        },
+        {
+          "number": 3,
+          "isBooked": false,
+          "isVip": false,
+          "isSelecting": true
+        },
+        {
+          "number": 4,
+          "isBooked": false,
+          "isVip": false,
+          "isSelecting": false
+        }
+      ]
+    },
+    {
+      "name": "C",
+      "seats": [
+        {
+          "number": 1,
+          "isBooked": false,
+          "isVip": false,
+          "isSelecting": false
+        },
+        {
+          "number": 2,
+          "isBooked": false,
+          "isVip": false,
+          "isSelecting": true
+        },
+        {
+          "number": 3,
+          "isBooked": false,
+          "isVip": false,
+          "isSelecting": true
+        },
+        {
+          "number": 4,
+          "isBooked": false,
+          "isVip": false,
+          "isSelecting": false
+        },
+        {
+          "number": 5,
+          "isBooked": true,
+          "isVip": false,
+          "isSelecting": false
+        },
+        {
+          "number": 6,
+          "isBooked": true,
+          "isVip": false,
+          "isSelecting": false
+        }
+      ]
+    },
+    {
+      "name": "D",
+      "seats": [
+        {
+          "number": 1,
+          "isBooked": false,
+          "isVip": false,
+          "isSelecting": false
+        },
+        {
+          "number": 2,
+          "isBooked": false,
+          "isVip": false,
+          "isSelecting": false
+        },
+        {
+          "number": 3,
+          "isBooked": false,
+          "isVip": false,
+          "isSelecting": false
+        },
+        {
+          "number": 4,
+          "isBooked": false,
+          "isVip": false,
+          "isSelecting": false
+        },
+        {
+          "number": 5,
+          "isBooked": true,
+          "isVip": false,
+          "isSelecting": false
+        },
+        {
+          "number": 6,
+          "isBooked": true,
+          "isVip": false,
+          "isSelecting": false
+        }
+      ]
+    },
+    {
+      "name": "E",
+      "seats": [
+        {
+          "number": 1,
+          "isBooked": false,
+          "isVip": false,
+          "isSelecting": false
+        },
+        {
+          "number": 2,
+          "isBooked": false,
+          "isVip": false,
+          "isSelecting": false
+        },
+        {
+          "number": 3,
+          "isBooked": false,
+          "isVip": false,
+          "isSelecting": false
+        },
+        {
+          "number": 4,
+          "isBooked": false,
+          "isVip": false,
+          "isSelecting": false
+        },
+        {
+          "number": 5,
+          "isBooked": true,
+          "isVip": false,
+          "isSelecting": false
+        },
+        {
+          "number": 6,
+          "isBooked": true,
+          "isVip": false,
+          "isSelecting": false
+        }
+      ]
+    }
+  ]
+}

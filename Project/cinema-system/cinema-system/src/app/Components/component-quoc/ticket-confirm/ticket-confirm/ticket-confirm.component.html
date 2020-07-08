@@ -1,0 +1,141 @@
+<div class="container" style="margin-bottom: 20px; background-color: #fdfcf0">
+    <h2 style="padding: 5px">Thông Tin Đặt Vé</h2>
+    <hr />
+    <div class="row">
+      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+        <img id="image-main" class="gallery-image visible" src="{{ ticket.movieSchedule.movie.srcImg }}" style="width: 210px; margin-left: 20px">
+      </div>
+      <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+        <label style="font-size: 140%">{{ ticket.movieSchedule.movie.movieName }}</label>
+        <hr>
+        <div class="row">
+          <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <strong>Màn hình: </strong>
+          </div>
+          <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+            <p>Scrn 02</p>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <strong>Ngày chiếu: </strong>
+          </div>
+          <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+            <p>{{ ticket.movieSchedule.movie.dateStart }}</p>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <strong>Giờ chiếu: </strong>
+          </div>
+          <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+            <p>{{ ticket.movieSchedule.showTime.hourStart }}</p>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <strong>Ghế: </strong>
+          </div>
+          <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+            <p>{{ticket.seat}}</p>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <strong>Giá: </strong>
+          </div>
+          <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+            <p>{{ ticket.price | currency : 'VND' }}</p>
+          </div>
+        </div>
+        
+        <hr>
+        <div class="row">
+          <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <strong>Tổng cộng: </strong>
+          </div>
+          <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+            <strong style="color: green">180000 VND</strong>
+          </div>
+        </div>
+       
+        
+       
+        <br>
+        <label style="font-size: 140%">Kiểm tra thông tin đặt vé</label>
+       
+        <table class="table table-striped table-hover" style="margin-top: 5px">
+        <thead>
+         
+        </thead>
+        <tbody>
+          <div class="container-fluid" *ngFor="let item of customers  ; let i = index" style="cursor: pointer;" [routerLink]="['/customer', item.id]">
+         
+            <div class="row">
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                <strong>Họ Tên </strong>
+              </div>
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                <p>{{ item.fullName }}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                <strong>Giới Tính </strong>
+              </div>
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                <p>{{ item.gender }}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                <strong>CMND </strong>
+              </div>
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                <p>{{ item.idCard}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                <strong>Email </strong>
+              </div>
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                <p>{{ item.email }}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                <strong>Địa Chỉ </strong>
+              </div>
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                <p>{{ item.address }}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                <strong>SĐT </strong>
+              </div>
+              <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                <p>{{ item.phone }}</p>
+              </div>
+            </div>
+          </div>
+        </tbody>
+      </table>
+        <button type="button" class="btn btn-warning" style="margin-top: 10px; margin-right: 2px">Quay lại</button>
+        <button type="button" class="btn btn-primary" [routerLink]="['/ticket-confirm-info', ticketId]" style="margin-top: 10px">Xác nhận bán vé</button>
+      </div>
+      
+      
+    </div>
+  </div>
+  

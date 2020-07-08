@@ -1,0 +1,57 @@
+.list-film{
+  width: 100%;
+  padding-left: 5%;
+}
+img {
+  height: 260px;
+  width: 220px;
+}
+
+.product-info{
+  padding-bottom: 95px;
+  width: 220px;
+  border: solid rgba(161,175,175,0.37) 0.5px;
+  max-height: none;
+  height: 180px ;
+  min-height: 100px;
+}
+
+.product-name{
+  position: relative;
+  line-height: 1.4;
+  text-align: left;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
+  margin-left: 8px;
+}
+.product-name a{
+  font-size: 15px;
+  font-weight: bold;
+  text-transform: none;
+}
+.movie-info{
+  text-align: left;
+  margin-left: 8px;
+}
+
+.movie-info-bold{
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.btn{
+  padding: 1px;
+  margin-left: 8px;
+  margin-top: 15%;
+  margin-bottom: 3%;
+  float: bottom ;
+}
+.btn-default{
+  border: solid gray 0.5px;
+}
+.col-lg-3 {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}

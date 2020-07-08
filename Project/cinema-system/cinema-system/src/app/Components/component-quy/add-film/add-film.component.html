@@ -1,0 +1,200 @@
+<div class="container " >
+  <h2 class="pt-5">Thêm mới phim</h2>
+  <form [formGroup]="formAddFilm">
+    <div class="form-group row">
+    <div  class="col-sm-2 d-flex justify-content-end">
+    </div>
+    <div  class="col-sm-4 d-flex">
+      <div class="mr-5">
+        <img
+          src="../../../../assets/images/{{srcImg | slice : 12 : 100}}" height="120" width="120" alt="..."></div>
+      <input formControlName="srcImg" [(ngModel)]="srcImg" type="file"  placeholder="Chọn tệp">
+<!--      <p  *ngIf="formAddFilm.controls.srcImg.errors?.required && formAddFilm.controls.srcImg.touched && ischeckform"-->
+<!--         style="color: red">Vui lòng chọn hình ảnh</p>-->
+      <p *ngIf="submitted && f.srcImg.errors"
+         style="color: red">Vui lòng chọn hình ảnh</p>
+    </div>
+    </div>
+    <div class="form-group row">
+      <label  class="col-sm-2 col-form-label d-flex justify-content-end ">Tên phim <span style="color: red">(*)</span></label>
+      <div class="col-sm-10">
+        <input [(ngModel)]="movieName" formControlName="movieName" type="text" class="form-control" placeholder="">
+        <p *ngIf="submitted && f.movieName.errors  "
+           style="color: red">Vui lòng nhập tên phim</p>
+      </div>
+    </div>  <div class="form-group row">
+      <label  class="col-sm-2 col-form-label d-flex justify-content-end">Từ ngày <span style="color: red">(*)</span></label>
+      <div class="col-sm-5">
+        <input formControlName="dateStart" [(ngModel)]="dayStart" max="{{dateEnd}}" type="date" class="form-control" placeholder="">
+        <p *ngIf="submitted && f.dateStart.errors  "
+           style="color: red">Vui lòng chọn ngày khời chiếu</p>
+      </div>
+    </div>  <div class="form-group row">
+      <label  class="col-sm-2 col-form-label d-flex justify-content-end  ">Đến ngày <span style="color: red">(*)</span></label>
+      <div class="col-sm-5">
+        <input  formControlName="dateEnd" [(ngModel)]="dateEnd" type="date" min="{{dayStart}}" class="form-control"  placeholder="">
+<!--        <p  *ngIf="isCheckFormDay" style="color: red">Ngày kết thúc phải lớn hơn ngày bắt đầu</p>-->
+        <p *ngIf="submitted && f.dateEnd.errors  "
+           style="color: red">Vui lòng chọn ngày kết thúc</p>
+      </div>
+    </div>  <div class="form-group row">
+      <label  class="col-sm-2 col-form-label d-flex justify-content-end  ">Diễn viên <span style="color: red">(*)</span></label>
+      <div class="col-sm-10">
+        <input formControlName="actor" [(ngModel)]="actor" type="text" class="form-control"  placeholder="">
+        <p *ngIf="submitted && f.actor.errors  "
+           style="color: red">Vui lòng nhập diễn viên</p>
+      </div>
+    </div>  <div class="form-group row">
+      <label  class="col-sm-2 col-form-label d-flex justify-content-end  ">Hãng phim <span style="color: red">(*)</span></label>
+      <div class="col-sm-10">
+        <input  formControlName="movieStudio" [(ngModel)]="movieStudio" type="text" class="form-control"  placeholder="">
+        <p *ngIf="submitted && f.movieStudio.errors  "
+           style="color: red">Vui lòng nhập hãng phim</p>
+      </div>
+    </div>  <div class="form-group row">
+      <label  class="col-sm-2 col-form-label d-flex justify-content-end  ">Đạo diễn <span style="color: red">(*)</span></label>
+      <div class="col-sm-10">
+        <input formControlName="directors" [(ngModel)]="directors" type="text" class="form-control"  placeholder="">
+        <p *ngIf="submitted && f.directors.errors  "
+           style="color: red">Vui lòng nhập đạo diễn</p>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label d-flex justify-content-end  ">Thời lượng <span style="color: red">(*)</span></label>
+      <div class="col-sm-10">
+        <input formControlName="duration" [(ngModel)]="durations" type="number" class="form-control"  placeholder="">
+        <p *ngIf="submitted && f.duration.errors  "
+           style="color: red">Vui lòng nhập thời lượng</p>
+      </div>
+    </div>
+<!--    <div class="form-group row">-->
+<!--      <label  class="col-sm-2 col-form-label d-flex justify-content-end  ">Phiên bản  <span style="color: red">(*)</span></label>-->
+<!--      <div class="col-sm-10">-->
+<!--          <input class="mr-2"  type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>-->
+<!--          <label  class="mr-5">-->
+<!--            2D-->
+<!--          </label>-->
+<!--          <input class="mr-2" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">-->
+<!--          <label >-->
+<!--           3D-->
+<!--          </label>-->
+<!--      </div>-->
+<!--    </div>  -->
+<div class="form-group row">
+      <label class="col-sm-2 col-form-label d-flex justify-content-end  ">Trailer <span style="color: red">(*)</span></label>
+      <div class="col-sm-10">
+        <input formControlName="srcVideo" [(ngModel)]="srcVideo"type="text" class="form-control" placeholder="">
+        <p *ngIf="submitted && f.srcVideo.errors  "
+           style="color: red">Vui lòng link Trailer</p>
+      </div>
+    </div>
+    <div class="form-group row" >
+      <label class="col-sm-2 col-form-label d-flex justify-content-end  ">Thể loại <span style="color: red">(*)</span></label>
+      <div id="checkbox1" class="col-sm-10">
+        <input [ngModelOptions]="{standalone: true}" [(ngModel)]="isHanhDong" (change)="checkValue(isHanhDong?'Hành dộng':'')" class="mr-2"  type="checkbox" name="exampleRadios"   >
+        <label style="font-weight: normal" >
+           Hành động
+        </label>
+        <input [ngModelOptions]="{standalone: true}" [(ngModel)]="isVienTuong" (change)="checkValue(isVienTuong?'Viễn tưởng':'')" class="mr-2"  type="checkbox" name="exampleRadios"   value="a"  >
+        <label style="font-weight: normal">
+           Viễn tưởng
+        </label>
+        <input [ngModelOptions]="{standalone: true}" [(ngModel)]="isHoatHinh" (change)="checkValue(isHoatHinh?'Hoạt hình':'')" class="mr-2"  type="checkbox" name="exampleRadios"  value="b" >
+        <label style="font-weight: normal" >
+           Hoạt hình
+        </label>  <input [ngModelOptions]="{standalone: true}" [(ngModel)]="isVoThuat" (change)="checkValue(isVoThuat?'Võ Thuật':'')" class="mr-2"  type="checkbox" name="exampleRadios"  value="c"  >
+        <label style="font-weight: normal">
+           Võ thuật
+        </label>
+        <br>
+        <input [ngModelOptions]="{standalone: true}" [(ngModel)]="isHaiHuoc" (change)="checkValue(isHaiHuoc?'Hài hước':'')" class="mr-2"  type="checkbox" name="exampleRadios"  value="option1" >
+        <label style="font-weight: normal" >
+          Hài hước
+        </label>
+        <input [ngModelOptions]="{standalone: true}" [(ngModel)]="isChienTranh" (change)="checkValue(isChienTranh?'Chiến tranh':'')" class="mr-2"  type="checkbox" name="exampleRadios"  value="option1" >
+        <label style="font-weight: normal" >
+          Chiến tranh
+        </label>
+        <input [ngModelOptions]="{standalone: true}" [(ngModel)]="isKinhDi" (change)="checkValue(isKinhDi?'Kinh dị':'')"  class="mr-2"  type="checkbox" name="exampleRadios"  value="option1" >
+        <label style="font-weight: normal" >
+          Kinh dị
+        </label>
+        <input [ngModelOptions]="{standalone: true}" [(ngModel)]="isKinhDien" (change)="checkValue(isKinhDien?'Kinh điển':'')"  class="mr-2"  type="checkbox" name="exampleRadios" i value="option1" >
+        <label style="font-weight: normal" >
+          Kinh điển
+        </label>
+        <br>
+        <input [ngModelOptions]="{standalone: true}" [(ngModel)]="isLangMang" (change)="checkValue(isLangMang?'Lãng mạng':'')"  class="mr-2"  class="mr-2"  type="checkbox" name="exampleRadios" value="option1" >
+        <label style="font-weight: normal" >
+          Lãng mạng
+        </label>
+        <input [ngModelOptions]="{standalone: true}" [(ngModel)]="isKiemHiep" (change)="checkValue(isKiemHiep?'Kiếm hiệp':'')" class="mr-2"  type="checkbox" name="exampleRadios"  value="option1" >
+        <label style="font-weight: normal">
+          Kiếm hiệp
+        </label>   <input [ngModelOptions]="{standalone: true}" [(ngModel)]="isPhieuDu" (change)="checkValue(isPhieuDu?'Phiêu du':'')" class="mr-2"  type="checkbox" name="exampleRadios"  value="option1" >
+        <label style="font-weight: normal" >
+          phiêu du
+        </label>   <input [ngModelOptions]="{standalone: true}" [(ngModel)]="isTamLy" (change)="checkValue(isTamLy?'Tâm lý':'')"  class="mr-2"  type="checkbox" name="exampleRadios"  value="option1" >
+        <label style="font-weight: normal" >
+          Tâm lý
+        </label>
+        <br>
+        <input [ngModelOptions]="{standalone: true}" [(ngModel)]="isTinhCam" (change)="checkValue(isTinhCam?'Tình cảm':'')" class="mr-2"  type="checkbox" name="exampleRadios"  value="option1" >
+        <label style="font-weight: normal" >
+          Tình cảm
+        </label>
+        <input [ngModelOptions]="{standalone: true}" [(ngModel)]="isAmNhac" (change)="checkValue(isAmNhac?'Âm nhạc':'')" class="mr-2"  type="checkbox" name="exampleRadios"  value="option1" >
+        <label style="font-weight: normal">
+          Âm nhạc
+        </label>
+        <input style="display: none" type="text" formControlName="movieType"   [(ngModel)]="movieTypeAction">
+        <p *ngIf="submitted && f.movieType.errors"
+           style="color: red">Vui lòng chọn thể loại phim</p>
+      </div>
+    </div>
+<!--    <div class="form-group row">-->
+<!--      <label  class="col-sm-2 col-form-label d-flex justify-content-end  ">Phòng chiếu <span style="color: red">(*)</span></label>-->
+<!--      <div class="col-sm-10">-->
+<!--        <input type="text" class="form-control" placeholder="">-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="form-group row">-->
+<!--      <label class="col-sm-2 col-form-label d-flex justify-content-end  ">Lịch chiếu<span style="color: red">(*)</span></label>-->
+<!--      <div class="col-sm-2">-->
+<!--        <input type="email" class="form-control" placeholder="">-->
+<!--      </div>-->
+<!--      <div class="col-sm-2">-->
+<!--        <button type="button" class="btn btn-primary">Thêm giờ chiếu</button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="form-group row">-->
+<!--      <label class="col-sm-2 col-form-label d-flex justify-content-end  "></label>-->
+<!--      <div class="col-sm-10">-->
+<!--        <input type="email" class="form-control" placeholder="">-->
+<!--      </div>-->
+<!--    </div>-->
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label d-flex justify-content-end  ">Nội dung<span style="color: red">(*)</span></label>
+      <div class="col-sm-10">
+        <textarea formControlName="content" [(ngModel)]="content" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <p *ngIf="submitted && f.content.errors  "
+           style="color: red">Vui lòng nhập nội dung</p>
+      </div>
+    </div>
+<!--    <div class="form-group row">-->
+<!--      <label  class="col-sm-2 col-form-label d-flex justify-content-end  ">Mã MV<span style="color: red">(*)</span></label>-->
+<!--      <div class="col-sm-10">-->
+<!--        <input type="email" class="form-control"  placeholder="">-->
+<!--      </div>-->
+<!--    </div>-->
+
+  </form>
+  <div class="form-group row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-10">
+      <button   type="submit" class="btn btn-primary" (click)="addNewFilm()">Thêm mới</button>
+    </div>
+  </div>
+</div>
+
+

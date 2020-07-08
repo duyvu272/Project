@@ -1,0 +1,145 @@
+<div class="container">
+  <form #formAddnewMember="ngForm"  (ngSubmit)="onSubmit()">
+  <div class="table-wrapper">
+    <div class="table-title">
+      <div class="row justify-content-center" style="padding-bottom: 30px">
+        <h2 style="font-size: 30px">Quản lý <b>thành viên</b></h2>
+      </div>
+      <div class="row">
+
+        <div class="col-sm-8">
+          <div class="input-group mt-2" style="margin-left: 0px;padding-bottom: 0px">
+            <input class="mainLoginInput" id="search" type="text" name="search" [(ngModel)]="searchText"
+                   placeholder="  Bắt đầu tìm kiếm theo tên nhân viên hoặc địa chỉ hoặc...">
+<!--            <span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>-->
+
+          </div>
+        </div>
+        <div class="col-sm-4 mt-4">
+          <button type="button" class="btn btn-success add-new" (click)="create()"><i class="fa fa-plus"></i> Thêm mới
+          </button>
+        </div>
+      </div>
+    </div>
+    <table class="table table-bordered">
+      <thead class="table-info">
+      <tr>
+        <th style="width: 30px">#</th>
+        <th style="width: 180px">Họ tên</th>
+        <th style="width: 130px">Ngày sinh</th>
+        <th style="width: 100px">Cmnn</th>
+        <th style="width: 100px">Địa chỉ</th>
+        <th style="width: 70px">Giới tính</th>
+        <th style="width: 200px">Email</th>
+        <th style="width: 100px">Điện thoại</th>
+        <th style="width: 80px">Thao tác</th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <tr
+        *ngFor="let mem of members | paginate: { itemsPerPage: 15, currentPage: p } | filter:searchText; let i = index">
+        <td scope="row">{{i + 1}} </td>
+
+        <td ><input  #fullName="ngModel" required minlength="6"  type="text"  class="ip"  placeholder="họ tên"
+                    [(ngModel)]='mem.fullName' [ngModelOptions]="{standalone: true}" [style.border]="bodercolor?'#fdfcf0  0px':'silver solid 1px'">
+          <div *ngIf="!fullName.valid && fullName.touched" style="color: red">
+            <p *ngIf="fullName?.errors?.required">Cần nhập họ tên</p>
+            <p *ngIf="fullName?.errors?.minlength">Họ tên nhập vào lớn hơn 6 kí tự</p>
+          </div>
+          <div style="color: red">
+            <p *ngIf="!mem.checkFullName && !fullName.touched">Không được để trống</p>
+          </div>
+
+        </td>
+
+        <td><input #dob="ngModel" required patern="^(0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])[- \/.](19|20)\d\d$"  style="width: 130px" type="date" class="ip"
+                   placeholder="ngày sinh" [style.border]="bodercolor?'#fdfcf0  0px':'silver solid 1px'"
+                   [(ngModel)]='mem.birthday' [ngModelOptions]="{standalone: true}">
+          <div *ngIf="!dob.valid && dob.touched" style="color: red">
+            <p *ngIf="dob?.errors?.required">Cần nhập ngày sinh</p>
+            <p *ngIf="dob?.errors?.pattern">Nhập ngày sinh đúng định dạng dd/MM/yyyy</p>
+          </div>
+          <div style="color: red">
+            <p *ngIf="!mem.checkBirthday && !dob.touched">Không được để trống</p>
+          </div>
+        </td>
+
+        <td><input #idCard="ngModel" required pattern="^([0-9]{9})$" style="width: 80px" type="text" class="ip"
+                   placeholder="cmnn" [style.border]="bodercolor?'#fdfcf0  0px':'silver solid 1px'"
+                    [(ngModel)]='mem.idCard' [ngModelOptions]="{standalone: true}">
+          <div *ngIf="!idCard.valid && idCard.touched" style="color: red">
+            <p *ngIf="idCard?.errors?.required">Cần nhập cmnn</p>
+            <p *ngIf="idCard?.errors?.pattern">Cmnn phải đúng định dạng 9 số</p>
+          </div>
+          <div style="color: red">
+            <p *ngIf="!mem.checkIdcard && !idCard.touched">Không được để trống</p>
+          </div>
+        </td>
+
+        <td><input  #address="ngModel" required style="width: 80px" type="text"  class="ip" placeholder="địa chỉ"
+                    [style.border]="bodercolor?'#fdfcf0  0px':'silver solid 1px'"
+                    [(ngModel)]='mem.address' [ngModelOptions]="{standalone: true}">
+          <div *ngIf="!address.valid && address.touched" style="color: red">
+            <p *ngIf="address?.errors?.required">Cần nhập địa chỉ</p>
+          </div>
+          <div style="color: red">
+            <p *ngIf="!mem.checkAddress && !address.touched">Không được để trống</p>
+          </div>
+        </td>
+
+        <td><input  #gender="ngModel" required pattern="^([N|n]am|[N|n]u)$" style="width: 60px" type="text"  class="ip"
+                    placeholder="giới tính" [style.border]="bodercolor?'#fdfcf0  0px':'silver solid 1px'"
+                    [(ngModel)]='mem.gender' [ngModelOptions]="{standalone: true}">
+          <div *ngIf="!gender.valid && gender.touched" style="color: red">
+            <p *ngIf="gender?.errors?.required">Cần nhập giới tính</p>
+            <p *ngIf="gender?.errors?.pattern">Giới tính hoặc là nam hoặc là nữ</p>
+          </div>
+          <div style="color: red">
+            <p *ngIf="!mem.checkGender && !gender.touched">Không được để trống</p>
+          </div>
+        </td>
+
+        <td><input #email="ngModel" required email style="width: 170px" type="text" class="ip"
+                   placeholder="email" [style.border]="bodercolor?'#fdfcf0  0px':'silver solid 1px'"
+                    [(ngModel)]='mem.email' [ngModelOptions]="{standalone: true}">
+          <div *ngIf="!email.valid && email.touched" style="color: red">
+            <p *ngIf="email ?.errors?.required">Cần nhập email</p>
+            <p *ngIf="email?.errors?.email">Email chưa đúng định dạng</p>
+          </div>
+          <div style="color: red">
+            <p *ngIf="!mem.checkEmail && !email.touched">Không được để trống</p>
+          </div>
+        </td>
+
+        <td><input #phone="ngModel" required pattern="^(0[0-9]{8})$" style="width: 80px" type="text" class="ip"
+                   placeholder="số điện thoại" [style.border]="bodercolor?'#fdfcf0  0px':'silver solid 1px'"
+                   [(ngModel)]='mem.phone' [ngModelOptions]="{standalone: true}">
+          <div *ngIf="!phone.valid && phone.touched" style="color: red">
+            <p *ngIf="phone ?.errors?.required">Cần nhập email</p>
+            <p *ngIf="phone?.errors?.pattern">phone chưa đúng định dạng,9 số bắt đầu bằng số 0</p>
+          </div>
+          <div style="color: red">
+            <p *ngIf="!mem.checkPhone && !phone.touched">Không được để trống</p>
+          </div>
+        </td>
+        <td class="d-flex " style="padding-top: 22px;">
+          <a class="add" title="Add" data-toggle="tooltip"  id="add{{i}}" (click)="add(i)"><i class="material-icons">&#xE03B;</i></a>
+          <a class="edit" title="Edit" data-toggle="tooltip" id="edit{{i}}" (click)="edit(i)"><i
+            class="material-icons">&#xE254;</i></a>
+          <a class="delete ml-2" title="Delete" data-toggle="tooltip" (click)="delete(i+1)"><i class="material-icons">&#xE872;</i></a>
+        </td>
+      </tr>
+      </tbody>
+      <button class="btn btn-success add-new" type="submit"  ><i class="material-icons">&#xE03B;</i>
+      </button>
+    </table>
+
+    <div class="row justify-content-center mt-5" id="page">
+      <pagination-controls (pageChange)="p = $event" nextLabel="Trang kế"
+                           previousLabel="Trang trước"></pagination-controls>
+    </div>
+  </div>
+  </form>
+</div>
+

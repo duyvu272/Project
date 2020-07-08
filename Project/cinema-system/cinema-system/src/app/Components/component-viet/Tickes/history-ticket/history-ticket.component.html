@@ -1,0 +1,56 @@
+<div class="history-ticket">
+  <div id="heading-loginInfo">History</div>
+  <form  (ngSubmit)="onSubmit()">
+    <div class="d-flex" style="margin-top: 15px">
+      <span style="margin-left: 30px">Form Date: </span>
+      <input id="input-dateStart" class="form-control" type="date"  required [(ngModel)]="from" name="from">
+    </div>
+    <div class="d-flex" style="margin-top: 15px">
+      <span style="margin-left: 30px">To Date: </span>
+      <input id="input-dateEnd" class="form-control" type="date"  required  [(ngModel)]="to" name="to">
+    </div>
+
+    <div class=" d-flex" style="margin-top: 15px">
+      <span style="margin-left: 30px">Type: </span>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="checkPoint" id="exampleRadios1" value="Plus" [(ngModel)]="checkPoint" checked>
+        <label id="checkboxPointPlus" class="form-check-label" for="exampleRadios1">
+          History Plus Point
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="checkPoint" id="exampleRadios2" value="Use" [(ngModel)]="checkPoint">
+        <label id="checkboxPointUse" class="form-check-label" for="exampleRadios2">
+          History Use Point
+        </label>
+      </div>
+    </div>
+    <div class="d-flex" id="btn-changPassWord">
+      <button class="btn btn-success" id="btn-watchPoint" type="submit">Watch Point
+      </button>
+    </div>
+  </form>
+  <div class="row">
+    <table id="tablePoint" class="table table-bordered table-hover">
+      <thead>
+      <tr style="text-align: center">
+        <th id="Date Creat">Date Creat</th>
+        <th id="Name Movie">Name Movie</th>
+        <th id="Point Plus">Point Plus</th>
+      </tr>
+      </thead>
+
+
+      <tbody style="text-align: center">
+      <tr *ngFor="let pointUser of history |paginate: { itemsPerPage: 3, currentPage: p } | filter:term" style="font-family: 'DM Sans', sans-serif;">
+        <td>{{pointUser.dateCreat| date:"dd-MM-yyyy"}}</td>
+        <td>{{pointUser.nameMovie}}</td>
+        <td>{{pointUser.pointValue}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+
+    <div id="page"> <pagination-controls (pageChange)="p = $event"></pagination-controls></div>
+  </div>
+</div>

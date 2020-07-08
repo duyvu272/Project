@@ -1,0 +1,148 @@
+
+<div id="information" class="d-flex">
+<div class="col-6 pr-10 mx-0">
+  <div class="informartion-login">
+    <div id="heading-loginInfo">Login Information</div>
+    <form [formGroup]="formMember1" >
+<!--      -->
+      <div class="d-flex" style="margin-top: 15px">
+        <span style="margin-left: 30px">Member ID: </span>
+        <span id="input-Account1" class="form-control" type="text" formControlName="id"   readonly>TV{{user.id}}</span>
+      </div>
+      <div class="d-flex" style="margin-top: 15px">
+        <span style="margin-left: 30px">Account: </span>
+        <input id="input-Account" class="form-control" type="text" formControlName="userName" [(ngModel)]="user.username"  readonly>
+      </div>
+      <div class="d-flex" style="margin-top: 15px">
+        <span style="margin-left: 30px">Old Password:  </span>
+        <input id="input-OldPassword" type="password" class="form-control" formControlName="oldPassWord" >
+      </div>
+      <p class="alert alert-danger text-danger"
+         *ngIf="formMember1.controls.oldPassWord.errors?.required && formMember1.controls.oldPassWord.touched ">
+        Input old password, Please!</p>
+      <div class="d-flex" style="margin-top: 15px">
+        <span style="margin-left: 30px">New Password: </span>
+        <input id="input-NewPassword" type="text" class="form-control" formControlName="newPassWord" >
+      </div>
+      <p class="alert alert-danger text-danger"
+         *ngIf="formMember1.controls.newPassWord.errors?.required && formMember1.controls.newPassWord.touched ">
+        Input new password, Please!</p>
+      <div class="d-flex" style="margin-top: 15px">
+        <span style="margin-left: 30px">Confirm password: </span>
+        <input id="input-ConfirmPassword" type="text" class="form-control" formControlName="confirmPassWord" >
+      </div>
+      <p class="alert alert-danger text-danger"
+         *ngIf="formMember1.controls.confirmPassWord.errors?.required && formMember1.controls.confirmPassWord.touched ">
+        Input Confirm PassWord, Please!</p>
+      <div class="d-flex" id="btn-changPassWord">
+        <button  [disabled]="formMember1.invalid" class="btn btn-danger" id="btn-logout" (click)="onEditPassword()"><span class="glyphicon glyphicon-lock" ></span> Change Password</button>
+      </div>
+
+    </form>
+  </div>
+</div>
+<div class="col-6 px-0 mx-0">
+  <div class="informartion-account">
+    <div id="heading-loginInfo1">Account Information</div>
+    <form [formGroup]="formMember2">
+
+<!--      INPUT NAME-->
+      <div class="d-flex" style="margin-top: 20px">
+        <span style="margin-left: 30px">Full Name: </span>
+        <input  [(ngModel)]="member.fullName" id="input-fullName" class="form-control" type="text" formControlName="fullName">
+      </div>
+      <p class="alert alert-danger text-danger"
+         *ngIf="formMember2.controls.fullName.errors?.required && formMember2.controls.fullName.touched ">
+        Input full name, Please!</p>
+      <p class="alert alert-danger text-danger"
+         *ngIf="formMember2.controls.fullName.errors?.pattern && formMember2.controls.fullName.touched ">
+        Invalid full name! Try Again, Please</p>
+
+
+
+
+      <!--      INPUT BIRTHDAY-->
+      <div class="d-flex" style="margin-top: 15px">
+        <span style="margin-left: 30px">Birthday: </span>
+        <input id="input-birthday" class="form-control" type="date" formControlName="birthday" [(ngModel)]="member.birthday">
+      </div>
+      <p class="alert alert-danger text-danger"
+         *ngIf="formMember2.controls.birthday.errors?.required && formMember2.controls.birthday.touched ">
+        Input birthday, Please!</p>
+
+
+
+<!--      INPUT GENDER-->
+      <div class=" d-flex" style="margin-top: 15px">
+        <span style="margin-left: 30px">Gender: </span>
+        <select id="input-Gender" type="text" class="form-control" formControlName="gender" [(ngModel)]="member.gender" >
+          <option>Male</option>
+          <option>Female</option>
+        </select>
+      </div>
+
+
+
+
+<!--      INPUT EMAIL-->
+      <div class="d-flex" style="margin-top: 15px">
+        <span style="margin-left: 30px">Email: </span>
+        <input id="input-Email" type="text" class="form-control" formControlName="email" [(ngModel)]="member.email">
+      </div>
+      <p class="alert alert-danger text-danger"
+         *ngIf="formMember2.controls.email.errors?.required && formMember2.controls.email.touched ">
+        Input email, Please!</p>
+      <p class="alert alert-danger text-danger"
+         *ngIf="formMember2.controls.email.errors?.pattern && formMember2.controls.email.touched ">
+        Invalid email! Try Again, Please</p>
+
+
+
+<!--      INPUT ID CARD-->
+      <div class="d-flex" style="margin-top: 15px">
+        <span style="margin-left: 30px">ID Card: </span>
+        <input id="input-IdCard" type="text" class="form-control" formControlName="idCard" [(ngModel)]="member.idCard">
+      </div>
+      <p class="alert alert-danger text-danger"
+         *ngIf="formMember2.controls.idCard.errors?.required && formMember2.controls.idCard.touched ">
+        Input id card, Please!</p>
+      <p class="alert alert-danger text-danger"
+         *ngIf="formMember2.controls.idCard.errors?.pattern && formMember2.controls.idCard.touched ">
+        Invalid id card! Try Again, Please</p>
+
+
+<!--INPUTPHONE-->
+      <div class="d-flex" style="margin-top: 15px">
+        <span style="margin-left: 30px">Phone: </span>
+        <input id="input-Phone" type="text" class="form-control" formControlName="phone" [(ngModel)]="member.phone">
+      </div>
+      <p class="alert alert-danger text-danger"
+         *ngIf="formMember2.controls.phone.errors?.required && formMember2.controls.phone.touched ">
+        Input phone, Please!</p>
+      <p class="alert alert-danger text-danger"
+         *ngIf="formMember2.controls.phone.errors?.pattern && formMember2.controls.phone.touched ">
+        Invalid phone! Try Again, Please</p>
+
+
+
+<!--      INPUT ADDRESS-->
+      <div class="d-flex" style="margin-top: 15px">
+        <span style="margin-left: 30px">Address: </span>
+        <input id="input-Address" type="text" class="form-control" formControlName="address" [(ngModel)]="member.address">
+      </div>
+      <p class="alert alert-danger text-danger"
+         *ngIf="formMember2.controls.address.errors?.required && formMember2.controls.address.touched ">
+        Input address, Please!</p>
+
+
+
+      <div class="d-flex" id="btn-changInfor">
+        <button  [disabled]="formMember2.invalid" class="btn btn-danger" id="btn-changeInfo" (click)="onEditInformartion()"><span class="glyphicon glyphicon-lock"></span> Change Information
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>
+</div>
+

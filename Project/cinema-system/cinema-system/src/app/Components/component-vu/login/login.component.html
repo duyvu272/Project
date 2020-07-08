@@ -1,0 +1,49 @@
+<div class="login">
+  <div class="d-flex justify-content-center h-100">
+    <div class="card">
+      <form [formGroup]="formLogin">
+        <div class="card-header">
+          <h3 style="font-weight: 800; font-family: Georgia,serif;">Login</h3>
+          <div class="d-flex justify-content-end social_icon">
+            <span><i class="fab fa-facebook-square" (click)="LoginByFacebook()"></i></span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-user"></i></span>
+            </div>
+            <input type="text" class="form-control" placeholder="Username" formControlName="username1">
+          </div>
+          <app-error-display [displayError]="isFieldValidUser('username1') || checkUsername" errorMsg="username is invalid"></app-error-display>
+
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-key"></i></span>
+            </div>
+            <input type="password" class="form-control" placeholder="Password" formControlName="password1">
+          </div>
+          <app-error-display [displayError]="(isFieldValidPassword('password1') && !checkStatus) || checkPassword && !checkStatus" errorMsg="password is invalid"></app-error-display>
+
+          <div class="row align-items-center remember">
+            <input type="checkbox" name="remember" id="rember" (change)="checkRemember($event.target)" >Remember me
+          </div>
+          <div class="form-group">
+            <input type="submit" value="Login" (click)="onSubmit()" class="btn float-right login_btn">
+          </div>
+        </div>
+        <div class="card-footer" style="margin-top: 15px;">
+          <div class="d-flex justify-content-center links" *ngIf="!checkStatus">
+            Don't have an account ?<a [routerLink]="['register']" >Sign Up</a>
+          </div>
+          <div  *ngIf="checkStatus" style="color: #ff2820;margin-left: 40px">
+            {{errorMessage}}
+          </div>
+          <div class="d-flex justify-content-center">
+            <a [routerLink]="['/resetPassword']" >Forgot password</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

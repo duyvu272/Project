@@ -1,0 +1,30 @@
+#search{
+  margin-left:60%;
+
+}
+#btnSearch{
+  margin-left: 5px;
+}
+#addNewEmployee{
+  height: 50px;
+  width: 280px;
+  margin-left: 40px;
+  margin-top: 25px;
+  font-family: Roboto;
+  font-size:20px;
+
+}
+
+#tableEmployee{
+  margin-left: 40px;
+  margin-top: 10px;
+  width: 90%;
+}
+#page{
+  margin-left:400px;
+  margin-top: 50px;
+}
+.form-control{
+  font-size:20px;
+  color: #222;
+}

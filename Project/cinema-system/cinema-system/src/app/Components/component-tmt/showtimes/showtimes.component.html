@@ -1,0 +1,41 @@
+<div id="bg" class="container-fluid">
+  <h2 id="title">MOVIE SCHEDULE</h2>
+  <div class="d-flex">
+    <div class="col-2 mx-0">
+      <h3 id="title1">MOVIE SCHEDULE</h3>
+      <select class="form-control" style="width: 100%" [(ngModel)]="listFilm">
+        <option id="select1" value="" selected disabled >Chọn ngày chiếu</option>
+        <option id="option1" *ngFor="let newDate of this.date"
+                value="{{newDate}}">{{newDate|date:"dd/MM/yyyy"}}</option>
+      </select>
+      <button style="margin-top: 10px;width: 100%" class="btn btn-danger" (click)="print()">Watch movie schedules
+      </button>
+      <button style="margin-top: 10px;width: 100%" class="btn btn-danger" [routerLink]="['/booking']">Order ticket now
+        !!!
+      </button>
+    </div>
+    <ng-container>
+      <div class="col-10 mx-0 d-flex flex-row flex-wrap"
+           style="height: 100%; background-color: rgba(255, 243, 22, 0.07); border-radius: 10px">
+        <ul *ngFor="let film of nameHourFilm1; index as i"
+            style="background-color:rgba(255, 243, 22, 0.07);margin-top: 10px">
+          <li><img class="image-film" src="{{film[1]}}" alt="" style="width: 100%;height:350px "></li>
+          <span class="form-control" style="margin-top: 5px; text-align: center;font-family: 'Modak', cursive;
+                background-color: rgba(6,5,4,0.91) !important; color: white">
+                <i class='far fa-hand-point-right'></i>{{film[0]}}</span>
+          <div id="show-hour" id="option" *ngFor="let film3 of  film[2]; index as i" style="height:50px;
+               font-size: 50px; text-align: center ; font-family: 'Modak', cursive; margin-top: 0px; background-color: rgba(255,255,255,0.85) !important;
+               color: rgba(6,5,4,0.91);
+               ">
+            {{film3}}
+          </div>
+        </ul>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+
+
+
+
